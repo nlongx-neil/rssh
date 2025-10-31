@@ -24,15 +24,12 @@ Options:
 ./rssh  -H x.x.x.x -p password -u user -P port exec "ls -alh"
 ```
 
+# 文件传输
+```bash
 # 下载文件
-```bash
-./rssh -H x.x.x.x -p password -u user -P port download --remote "/xxxx/xxx/xxxxx.dat" --local /xxxx/xxx/xx
-```
-+ 如果 --local 是目录，要加 路径分割符(例如 / ) 结尾：
-1. 如果目录存在，则自动下载到该目录
-2. 如果目录不存在，则自动创建该目录
-
+./rssh -H x.x.x.x -p password -u user -P port download --remote remote_file --local local_path
 # 上传文件
-```bash
-./rssh -H x.x.x.x -p password -u user -P port upload --local /xxxx/xxx/xxx.jar --remote ${upload_dir}
+./rssh -H x.x.x.x -p password -u user -P port upload --local local_file --remote remote_path
 ```
+1. local_path , remote_path 支持文件和目录，如果目录不存在，需要以 / 结尾
+2. 支持sftp
